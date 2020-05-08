@@ -6,7 +6,6 @@
 
 {% block body %}
     <h1>Flights</h1>
-
     {% for flight in flights %}
         <li>
             <a href="{% url 'flights:flight' flight.id %}">
@@ -15,4 +14,45 @@
         </li>
     {% endfor %}
 
-{% endblock %}
+    <h3>Available Airports</h3>
+    {% for airport in airports %}
+        <li>
+            {{ airport.city }}: #{{ airport.code }}
+        </li>
+    {% endfor %}
+
+    <!-- <h2>Add Flight</h2>
+    <form action="{% url 'flights:addflight' %}" method="post" name="flight">
+        {% csrf_token %}
+        <label>Origin</label>
+        <input type="text" name="origin">
+        <label>Destination</label>
+        <input type="text" name="destination">
+        <label>Duration</label>
+        <input type="number" name="duration">
+        <label>Seats Available</label>
+        <input type="number" name="seats">
+        <input type="submit" value="Add New Flight">
+    </form> -->
+
+    <h2>Add a New Flight</h2>
+    <form action="{% url 'flights:addflight' %}" method="post">
+        {% csrf_token %}
+        <select name="airport1">
+            {% for airport in airports %}
+                <option value="{{ airport.id }}">{{ airport }}</option>
+            {% endfor %}
+        </select>
+        <select name="airport2">
+            {% for airport in airports %}
+                <option value="{{ airport.id }}">{{ airport }}</option>
+            {% endfor %}
+        </select>
+        <label>Duration</label>
+        <input type="number" name="duration">
+        <label>Seats Available</label>
+        <input type="number" name="seats">
+        <input type="submit" value="Add Flight">
+    </form>
+
+{% endblock body %}
