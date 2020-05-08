@@ -17,7 +17,7 @@
             Passengers:
             <ul>
                 {% for passenger in passengers %}
-                    <li>{{ passenger }}</li>
+                    <li>{{ passenger.first }} {{ passenger.last }}</li>
                 {% empty %}
                     <li>No passengers</li>
                 {% endfor %}
@@ -25,10 +25,11 @@
         </li>
     </ul>
     {% if non_passengers %}
-        <h2>Add a Passenger from Pool</h2>
+        <h2>Add To Current Flight</h2>
         <form action="{% url 'flights:book' flight.id %}" method="post">
             {% csrf_token %}
             <select name="passenger">
+                <option disabled selected value>Select</option>
                 {% for passenger in non_passengers %}
                     <option value="{{ passenger.id }}">{{ passenger }}</option>
                 {% endfor %}
@@ -38,14 +39,26 @@
     {% else %}
         <div>No passengers to add.</div>
     {% endif %}
+
+    <h2>Remove From Current Flight</h2>
+    <form action="{% url 'flights:deletebook' flight.id %}" method="post">
+        {% csrf_token %}
+        <select name="passenger">
+            <option disabled selected value>Select</option>
+            {% for passenger in passengers %}
+                <option value="{{ passenger.id }}">{{ passenger }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Delete">
+    </form>
     
-    <h2>Book Flight</h2>
+    <h2>Book This Flight</h2>
     <form action="{% url 'flights:signup' flight.id %}" method="post" name="customer">
         {% csrf_token %}
+        <label>First Name</label>
+        <input type="text" name="first"> 
         <label>Last Name</label>
         <input type="text" name="last">
-        <label>First Name</label>
-        <input type="text" name="first">   
         <input type="submit" value="Book Now">
     </form>
     <br>
