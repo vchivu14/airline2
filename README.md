@@ -1,6 +1,6 @@
 # airline
 
-<h2>Airline Booking Application</h2>
+<h2>Ticket Booking Application</h2>
 <p>Steps:</p>
 <ol>
   <li>git clone https://github.com/vchivu14/airline.git</li>
