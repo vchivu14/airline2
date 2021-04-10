@@ -11,4 +11,3 @@
   <li>python3 manage.py runserver</li>
   <li>check localhost:8000/fly</li>
 </ol>
-<h5>Create a superuser as admin for the website</h5>
