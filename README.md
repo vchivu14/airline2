@@ -1,7 +1,6 @@
 # airline
 
-<h2>Airline Booking App</h2>
-<h4>Just Python3 and Django</h4>
+<h2>Airline Booking Application</h2>
 <p>Steps:</p>
 <ol>
   <li>git clone https://github.com/vchivu14/airline.git</li>
