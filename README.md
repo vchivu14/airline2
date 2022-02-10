@@ -1,7 +1,7 @@
 Project for Course:
 HarvardX CS50W
 Web Programming with Python and JavaScript 
-
+ 
 <h2>Ticket Booking Application</h2>
 <p>Steps:</p>
 <ol>
